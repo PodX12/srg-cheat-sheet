@@ -1,7 +1,7 @@
 <template>
   <div style="margin-bottom: 50px;" >
     <label>Raw Data</label>
-    <input type="text" :value="rawData" @change="parseData()"/>
+    <input type="text" v-model="rawData" @change="parseData()"/>
   </div>
   <div class="main">
     <div class="overworld">
@@ -118,6 +118,7 @@ export default {
   },
   methods: {
     parseData() {
+      console.log(this.rawData)
       var split = this.rawData.split("\t");
 
       this.info = {
