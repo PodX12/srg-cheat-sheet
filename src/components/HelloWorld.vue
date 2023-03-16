@@ -1,7 +1,7 @@
 <template>
   <div style="margin-bottom: 50px;" >
     <label>Raw Data</label>
-    <input type="text" :value="rawData" />
+    <input type="text" :value="rawData" @change="parseData()"/>
   </div>
   <div class="main">
     <div class="overworld">
