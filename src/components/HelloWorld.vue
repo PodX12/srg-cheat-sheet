@@ -1,94 +1,103 @@
 <template>
-  <div style="margin-bottom: 50px;" >
-    <label>Raw Data</label>
-    <input type="text" v-model="rawData" @change="parseData()"/>
-  </div>
-  <div class="main">
-    <div class="overworld">
-      <div class="item-title">Overworld</div>
-      <div class="item">
-        <div class="img"><img :src="icons.flint" /></div>
-        <div class="note">
-          First Flint - {{ this.info.flint }}
-        </div>
-      </div>
-      <div class="item">
-        <div class="img"><img :src="icons.iron" /></div>
-        <div class="note">
-          Golem - 4
-        </div>
-      </div>
+  <div class="obs-main">
+    <div class="main-title">
+      Couples Counselling Tournament
     </div>
-
-    <div class="fortress">
-      <div class="item-title">Fortress</div>
-      <div class="item">
-        <div class="img"><img :src="icons.blaze" /></div>
-        <div class="note">
-          5 - {{ this.info.fort["5"] }} Blazes
-        </div>
-      </div>
-      <div class="item">
-        <div class="img">
-          <img :src="icons.blaze" />
-        </div>
-        <div class="note">
-          6 - {{ this.info.fort["6"] }} Blazes
-        </div>
-      </div>
+    <div class="sub-title">
+      {{subTitle}}
     </div>
-
-    <div class="clear"></div>
-    <div class="bastion">
-      <div class="item-title">Bastion Barters</div>
-      <div class="block-group" v-for="g in this.info.gold" v-bind:key="g.goldBlocks">
+    <div class="seed-info">
+      <div class="overworld">
+        <div class="item-title">Overworld</div>
         <div class="item">
-          <div class="img"><img :src="icons.gold" /></div>
+          <div class="img"><img :src="icons.flint" /></div>
           <div class="note">
-            {{ g.goldBlocks }} Blocks
+            First Flint - {{ this.info.flint }}
           </div>
         </div>
-        <div class="trade">
-          <div class="img"><img :src="icons.pearl" /></div>
+        <div class="item">
+          <div class="img"><img :src="icons.iron" /></div>
           <div class="note">
-            {{ g.pearls }}
-          </div>
-        </div>
-        <div class="trade">
-          <div class="img"><img :src="icons.string" /></div>
-          <div class="note">
-            {{ g.string }}
-          </div>
-        </div>
-        <div class="trade">
-          <div class="img"><img :src="icons.obi" /></div>
-          <div class="note">
-            {{ g.obi }}
-          </div>
-        </div>
-        <div class="trade">
-          <div class="img"><img :src="icons.res" /></div>
-          <div class="note">
-            {{ g.res }}
+            Golem - 4
           </div>
         </div>
       </div>
+
+      <div class="fortress">
+        <div class="item-title">Fortress</div>
+        <div class="item">
+          <div class="img"><img :src="icons.blaze" /></div>
+          <div class="note">
+            5 - {{ this.info.fort["5"] }} Blazes
+          </div>
+        </div>
+        <div class="item">
+          <div class="img">
+            <img :src="icons.blaze" />
+          </div>
+          <div class="note">
+            6 - {{ this.info.fort["6"] }} Blazes
+          </div>
+        </div>
+      </div>
+
       <div class="clear"></div>
-    </div>
+      <div class="bastion">
+        <div class="item-title">Bastion Barters</div>
+        <div class="block-group" v-for="g in this.info.gold" v-bind:key="g.goldBlocks">
+          <div class="item">
+            <div class="img"><img :src="icons.gold" /></div>
+            <div class="note">
+              {{ g.goldBlocks }} Blocks
+            </div>
+          </div>
+          <div class="trade">
+            <div class="img"><img :src="icons.pearl" /></div>
+            <div class="note">
+              {{ g.pearls }}
+            </div>
+          </div>
+          <div class="trade">
+            <div class="img"><img :src="icons.string" /></div>
+            <div class="note">
+              {{ g.string }}
+            </div>
+          </div>
+          <div class="trade">
+            <div class="img"><img :src="icons.obi" /></div>
+            <div class="note">
+              {{ g.obi }}
+            </div>
+          </div>
+          <div class="trade">
+            <div class="img"><img :src="icons.res" /></div>
+            <div class="note">
+              {{ g.res }}
+            </div>
+          </div>
+        </div>
+        <div class="clear"></div>
+      </div>
 
-    <div class="stronghold">
-      <div class="item-title">Portal Room #1: <span class="sh1">{{ this.info.stronghold["1"].eyes }} eye</span></div>
-      <div>Nether: <span class="sh1">{{ this.info.stronghold["1"].pos }}</span></div>
-    </div>
-    <div class="stronghold">
-      <div class="item-title">Portal Room #2: <span class="sh2">{{ this.info.stronghold["2"].eyes }} eye</span></div>
-      <div>Nether: <span class="sh2">{{ this.info.stronghold["2"].pos }}</span></div>
-    </div>
+      <div class="stronghold">
+        <div class="item-title">Portal Room #1: <span class="sh1">{{ this.info.stronghold["1"].eyes }} eye</span></div>
+        <div>Nether: <span class="sh1">{{ this.info.stronghold["1"].pos }}</span></div>
+      </div>
+      <div class="stronghold">
+        <div class="item-title">Portal Room #2: <span class="sh2">{{ this.info.stronghold["2"].eyes }} eye</span></div>
+        <div>Nether: <span class="sh2">{{ this.info.stronghold["2"].pos }}</span></div>
+      </div>
 
-    <div class="stronghold">
-      <div class="item-title">Portal Room #3: <span class="sh3">{{ this.info.stronghold["3"].eyes }} eye</span></div>
-      <div>Nether: <span class="sh3">{{ this.info.stronghold["3"].pos }}</span></div>
+      <div class="stronghold">
+        <div class="item-title">Portal Room #3: <span class="sh3">{{ this.info.stronghold["3"].eyes }} eye</span></div>
+        <div>Nether: <span class="sh3">{{ this.info.stronghold["3"].pos }}</span></div>
+      </div>
     </div>
+    <div class="green-space vid"></div>
+  </div>
+  <div style="margin-bottom: 50px;">
+    <label>Raw Data</label>
+    <input type="text" v-model="rawData" @change="parseData()" />
   </div>
 </template>
 
@@ -109,17 +118,23 @@ export default {
         iron: "https://static.wikia.nocookie.net/minecraft_gamepedia/images/f/fc/Iron_Ingot_JE3_BE2.png",
         endPortal: "https://static.wikia.nocookie.net/minecraft/images/4/44/EndPortal.png"
       },
-      rawData: "5	6	12	12	28	2	4	19	28	6	4	19	43	8	4	19	63	11	8	0	121 183	5	-299 19	3	158 -217",
+      rawData: "14;7;8;0;9;3;2;5;44;5;2;18;64;7;2;30;82;8;3;1;89 -263;1;222 235;0;-317 62;1",
       info: null
     }
   },
   created() {
+    let dataSplit = window.location.href.split("/?data=");
+
+    if (dataSplit[1]) {
+      this.rawData = decodeURI(dataSplit[1]);
+    }
+
     this.parseData();
   },
   methods: {
     parseData() {
       console.log(this.rawData)
-      var split = this.rawData.split("\t");
+      var split = this.rawData.split(";");
 
       this.info = {
         flint: split[0],
@@ -172,20 +187,16 @@ export default {
           }
         }
       }
+
+      console.log(split[25]);
+      this.subTitle = "Next Seed";
     }
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style>
-body {
-  background-color: #333;
-  color: #eee;
-  margin: 20px !important;
-  text-shadow: 1px 1px 1px #000000ee;
-}
-
+<style scoped>
 .item {
   padding: 5px 0;
 }
@@ -298,11 +309,21 @@ body {
 }
 
 
-.main {
-  width: 420px;
+.seed-info {
   background-image: url("../assets/image-2.png");
   background-size: 130%;
   padding-bottom: 5px;
+  float: left;
+  margin-top: 100px;
+  margin-left: 150px;
+  margin-right: 200px;
+  transform: scale(1.2);
+}
+.green-space.vid{
+  float: left;
+  width: 940px;
+  margin-top: 100px;
+  transform: scale(1.2);
 }
 
 .sh1 {
